@@ -3126,7 +3126,7 @@ expo-status-bar@~1.0.3:
   resolved "https://registry.yarnpkg.com/expo-status-bar/-/expo-status-bar-1.0.3.tgz#62b4d6145680abd43ba6ecfa465f835e88bf6263"
   integrity sha512-/Orgla1nkIrfswNHbuAOTbPVq0g3+GrhoQVk7MRafY2dwrFLgXhaPExS+eN2hpmzqPv2LG5cqAZDCQUAjmZYBQ==
 
-expo@~40.0.0:
+expo@^40.0.1:
   version "40.0.1"
   resolved "https://registry.yarnpkg.com/expo/-/expo-40.0.1.tgz#20ae9f9c787ba1662037094dfd6982380f2c0288"
   integrity sha512-9NrhimvP44I1aDjGHMU4F0izCyfFTTYAQ6xZpWpuc+ZWRZqg8Zv62zNRlzBn+Ydaf1heSucnlJJ3Sp2gMdOEnQ==
@@ -3705,7 +3705,7 @@ inquirer@^3.0.6:
     strip-ansi "^4.0.0"
     through "^2.3.6"
 
-invariant@^2.2.2, invariant@^2.2.4:
+invariant@^2.1.0, invariant@^2.2.2, invariant@^2.2.4:
   version "2.2.4"
   resolved "https://registry.yarnpkg.com/invariant/-/invariant-2.2.4.tgz#610f3c92c9359ce1db616e538008d23ff35158e6"
   integrity sha512-phJfQVBuaJM5raOpJjSfkiD6BpbCE4Ns//LaXl6wGYtUBY83nWS6Rf9tXm2e8VaK60JEjYldbPif/A2B1C2gNA==
@@ -5240,7 +5240,7 @@ promise@^8.0.3:
   dependencies:
     asap "~2.0.6"
 
-prop-types@^15.6.0, prop-types@^15.6.2, prop-types@^15.7.2:
+prop-types@^15.5.10, prop-types@^15.6.0, prop-types@^15.6.2, prop-types@^15.7.2:
   version "15.7.2"
   resolved "https://registry.yarnpkg.com/prop-types/-/prop-types-15.7.2.tgz#52c41e75b8c87e72b9d9360e0206b99dcbffa6c5"
   integrity sha512-8QQikdH7//R2vurIJSutZ1smHYTcLpRWEOlHnzcWHmBYrOGUysKwSsrC89BCiFj3CbrfJ/nXFdJepOVrY1GCHQ==
@@ -5314,6 +5314,20 @@ react-is@^17.0.1:
   version "17.0.1"
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-17.0.1.tgz#5b3531bd76a645a4c9fb6e693ed36419e3301339"
   integrity sha512-NAnt2iGDXohE5LI7uBnLnqvLQMtzhkiAOLXTmv+qnF9Ky7xAPcX8Up/xWIhxvLVGJvuLiNc4xQLtuqDRzb4fSA==
+
+react-native-button@^3.0.1:
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/react-native-button/-/react-native-button-3.0.1.tgz#89de59b6ee23f6cb4451c4ebe311cc14fb02c65a"
+  integrity sha512-Tkj7PwATNEXPOX4ubE+P8WnyJMenywU6Es/Bk2r2aR15204+AxSOEB3sp7JDP44LI+tUMetjudNBRRuKQOmoPw==
+  dependencies:
+    prop-types "^15.5.10"
+
+react-native-cookies@^3.3.0:
+  version "3.3.0"
+  resolved "https://registry.yarnpkg.com/react-native-cookies/-/react-native-cookies-3.3.0.tgz#527f65eb2d8a7a000107706bb11beb57f511e701"
+  integrity sha512-GobKo8Kvyuif6ROj6rDAjQJpCSLazcZl6AgZb1z7ldB9FrMtetQzXvIehS0QcwbpnXWyJzXJaY0yrlDjFz+NaA==
+  dependencies:
+    invariant "^2.1.0"
 
 react-native-gesture-handler@~1.8.0:
   version "1.8.0"
