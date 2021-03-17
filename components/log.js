@@ -21,7 +21,7 @@ function Log(){
             <Text style={{fontSize:100}}>
                 {num}
             </Text>
-            <Button title="Decrement" onPress={() =>setnum([instance.baseURL])}/> 
+            <Button title="URL" onPress={() =>setnum([instance.baseURL])}/> 
             <Text>{instance.basedURL}</Text>     
          </View>
     );

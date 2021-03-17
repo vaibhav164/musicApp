@@ -13,10 +13,11 @@ function Feed({ navigation }) {
     <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
       <Text style={{margin:10, fontSize: 20}}>Press Button</Text>
       <Button
-        title="Slider"
+        title="Press"
         color='#000'
         onPress={() => navigation.dispatch(DrawerActions.openDrawer())}
       />
+      <Text>OR SCROLL RIGHT</Text>
     </View>
   );
 }

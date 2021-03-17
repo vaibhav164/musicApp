@@ -54,7 +54,7 @@ export default function App() {
         }}
       >
         <Tab.Screen name="Home" component={HomeScreen} />
-        <Tab.Screen name="Settings" component={SettingsScreen} />
+        <Tab.Screen name="Setting" component={SettingsScreen} />
         <Tab.Screen name="Log" component={SettingsLog} />
       </Tab.Navigator>
     </NavigationContainer>
