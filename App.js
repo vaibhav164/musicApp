@@ -3,44 +3,24 @@ import { Text, View, StyleSheet, TextInput,Button } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { NavigationContainer } from '@react-navigation/native';
-
-
+import Settings from './components/settings';
+import Home from './components/home';
+import Log from './components/log';
 function HomeScreen() {
   return (
-    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: '#e4bad4' }}>
-      <View style={styles.inputView}>
-        <TextInput
-          style={styles.TextInput}
-          placeholder="Login."
-          placeholderTextColor="#000"
-          onChangeText={(email) => setEmail(email)}
-            />
-        </View>
-        <View style={styles.inputView}>
-        <TextInput
-          style={styles.TextInput}
-          placeholder="Password."
-          placeholderTextColor="#000"
-          onChangeText={(email) => setEmail(email)}
-            />
-        </View>
-        <Button title="Login"/>
-    </View>
-  ); z
+    <Home />
+  );
 }
 
 function SettingsScreen() {
   return (
-    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: '#f48b29' }}>
-      <Text>Settings!</Text>
-    </View>
+    <Settings />
+  
   );
 }
 function SettingsLog() {
   return (
-    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: '#cdc733' }}>
-      <Text>Log!</Text>
-    </View>
+    < Log />
   );
 }
 
@@ -81,17 +61,3 @@ export default function App() {
   );
 }
 
-const styles = StyleSheet.create({
-  inputView: {
-    // backgroundColor: "powderblue",
-    borderWidth: 1,
-    borderColor:"powderblue",
-    borderRadius: 30,
-    width: "70%",
-    height: 45,
-    marginBottom: 20,
-    padding: 10,
-    fontSize: 20,
-    alignItems: "flex-start",
-  }
-});
