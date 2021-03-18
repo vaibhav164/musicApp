@@ -5,7 +5,8 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { NavigationContainer } from '@react-navigation/native';
 import Settings from './components/settings';
 import Home from './components/home';
-import Log from './components/log';
+// import Log from './components/log';
+import ApiCall from './components/ApiCall';
 function HomeScreen() {
   return (
     <Home />
@@ -20,7 +21,7 @@ function SettingsScreen() {
 }
 function SettingsLog() {
   return (
-    < Log />
+    <ApiCall />
   );
 }
 
@@ -29,7 +30,7 @@ const Tab = createBottomTabNavigator();
 
 export default function App() {
   return (
-    <NavigationContainer>
+    <NavigationContainer style={styles.Navigation}>
 
       <Tab.Navigator
         screenOptions={({ route }) => ({
@@ -39,18 +40,16 @@ export default function App() {
             if (route.name === 'Home') {
               iconName = focused ? 'ios-information-circle' : 'ios-information-circle-outline';
             } else if (route.name === 'Settings') {
-              iconName = focused ? 'ios-list' : 'ios-list-outline';
+              iconName = focused ? 'ios-information-circle' : 'ios-information-circle';
             } else if (route.name === 'Log') {
               iconName = focused ? 'book' : 'book';
             }
-
-            // You can return any component that you like here!
             return <Ionicons name={iconName} size={size} color={color} />;
           },
         })}
         tabBarOptions={{
           activeTintColor: 'tomato',
-          inactiveTintColor: 'gray',
+          inactiveTintColor: '#693c72',
         }}
       >
         <Tab.Screen name="Home" component={HomeScreen} />
@@ -61,3 +60,8 @@ export default function App() {
   );
 }
 
+const styles = StyleSheet.create({
+Navigation:{
+ backgroundColor: '#f25287',
+}
+})

@@ -17,7 +17,7 @@ export default function Home()  {
           style={styles.TextInput}
           placeholder="Password."
           placeholderTextColor="#000"
-          onChangeText={(email) => setEmail(email)}
+          onChangeText={(password) => setPassword(password)}
             />
         </View>
         <Button title="Login" 

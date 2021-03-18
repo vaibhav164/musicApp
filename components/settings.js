@@ -1,5 +1,5 @@
 import * as React from "react";
-import { View, Text, Button } from "react-native";
+import { View, Text, Button, StyleSheet } from "react-native";
 import {DrawerActions } from "@react-navigation/native";
 import {
   createDrawerNavigator,
@@ -46,6 +46,7 @@ export default function Settings() {
   return (
   
         <Drawer.Navigator
+        style={StyleSheet.container}
         drawerContent={(props) => <CustomDrawerContent {...props} />}
         >
             <Drawer.Screen name="Feed" component={Feed} />
@@ -54,3 +55,8 @@ export default function Settings() {
   
   );
 }
+const styles = StyleSheet.create({
+  container:{
+backgroundColor: '#000'
+  }
+})
