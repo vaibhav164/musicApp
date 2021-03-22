@@ -5,7 +5,6 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { NavigationContainer } from '@react-navigation/native';
 import Settings from './components/settings';
 import Home from './components/home';
-// import Log from './components/log';
 import ApiCall from './components/ApiCall';
 function HomeScreen() {
   return (
@@ -21,7 +20,7 @@ function SettingsScreen() {
 }
 function SettingsLog() {
   return (
-    <ApiCall />
+    <ApiCall/>
   );
 }
 

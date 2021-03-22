@@ -1,22 +1,27 @@
-import React from 'react';
-import {StyleSheet, ImageBackground, View, TouchableOpacity, Text} from 'react-native';
+import React,{useState, useEffect} from 'react';
+import {StyleSheet, ImageBackground,FlatList, View, TouchableOpacity, Text} from 'react-native';
 import axios from 'axios';
+import Record from "./reacord.js";
+const ApiCall = ({navigation}) => {
+  const URL ='https://itunes.apple.com/search?term=Michael+jackson'
 
-const ApiCall = () => {
+    const [Track, setTrack] = useState([]);
 
-    const getDataUsingSimpleGetCall = () => {
-    axios
-      .get('https://itunes.apple.com/search?term=Michael+jackson')
-      .then(function (response) {
-        alert(JSON.stringify(response.data));
-      })
-      .catch(function (error) {
-        alert(error.message);
-      })
-    //   .finally(function () {
-    //     alert('Finally called');
-    //   });
-  };
+    useEffect(() => {
+      getTrackList();
+    }, []);
+  
+    const getTrackList = async () => {
+      try {
+        const response = await axios.get(URL);
+  
+        return setTrack(response.data);
+      } catch (error) {
+        console.warn(error);
+      }
+    };
+
+
 
   const getDataUsingAsyncAwaitGetCall = async () => {
     try {
@@ -32,22 +37,16 @@ const ApiCall = () => {
     return (
     <View style={styles.container}>
     <ImageBackground source={image} style={styles.image}>
-    <Text style={styles.Text}>
-                API Call 
-      </Text>
-      <TouchableOpacity
-        style={styles.buttonStyle}
-        onPress={getDataUsingSimpleGetCall}>
-        <Text style={styles.btnTxt}>Artists</Text>
-      </TouchableOpacity>
-
-      <TouchableOpacity
-        style={styles.buttonStyle}
-        onPress={getDataUsingAsyncAwaitGetCall}>
-        <Text style={styles.btnTxt}>Favourates</Text>
-      </TouchableOpacity>
+  
+      <FlatList
+        data={Track.results}
+        keyExtractor={(index) => index.key}
+        renderItem={({ item }) => {
+          return <Record item={item} navigation={navigation} />;
+        }}
+      />
     </ImageBackground>
-       
+    
     </View>
   );
 };
@@ -61,8 +60,10 @@ const styles = StyleSheet.create({
   image: {
     flex: 1,
     resizeMode: "cover",
-    padding: 120,
-    justifyContent: "center"
+    // resizeMode: "cover",
+    justifyContent: "center",
+    position: "relative"
+   
   },
   buttonStyle: {
     alignItems: 'center',
