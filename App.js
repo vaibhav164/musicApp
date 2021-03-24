@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Text, View, StyleSheet, TextInput,Button } from 'react-native';
-import { Ionicons } from '@expo/vector-icons';
+import { Ionicons,AntDesign } from '@expo/vector-icons';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { NavigationContainer } from '@react-navigation/native';
 import Settings from './components/settings';
@@ -39,7 +39,7 @@ export default function App() {
             if (route.name === 'Home') {
               iconName = focused ? 'ios-information-circle' : 'ios-information-circle-outline';
             } else if (route.name === 'Settings') {
-              iconName = focused ? 'ios-information-circle' : 'ios-information-circle';
+              iconName = focused ? 'information-circle' : 'information-circle';
             } else if (route.name === 'Log') {
               iconName = focused ? 'book' : 'book';
             }

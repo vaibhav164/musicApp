@@ -1,8 +1,9 @@
 import React, { useCallback } from "react";
 import {View,StyleSheet,Text,Image,TouchableOpacity} from "react-native";
+import Info from "./Info";
 const Record = (props) => {
   const navigateToDetailScreen = useCallback((item) => {
-    props.navigation.navigate("Details", { param: props.item }, [item]);
+    props.navigation.navigate("Info", { param: props.item }, [item]);
   });
   return (
     <TouchableOpacity onPress={navigateToDetailScreen}>
@@ -24,7 +25,7 @@ const styles = StyleSheet.create({
     //Button:
     backgroundColor: "white",
     margin: 15,
-    opacity: 0.5,
+    opacity: 0.7,
   },
   title: {
     fontSize: 20,

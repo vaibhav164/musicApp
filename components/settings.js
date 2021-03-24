@@ -49,7 +49,7 @@ export default function Settings() {
         style={StyleSheet.container}
         drawerContent={(props) => <CustomDrawerContent {...props} />}
         >
-            <Drawer.Screen name="Feed" component={Feed} />
+            <Drawer.Screen name="Profile" component={Feed} />
                            
         </Drawer.Navigator>  
   
