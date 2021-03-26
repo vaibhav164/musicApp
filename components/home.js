@@ -1,7 +1,9 @@
 import React, { useState, useEffect }  from 'react';
-import { View, Text, Button ,StyleSheet,TextInput,TouchableOpacity} from "react-native";
+import { View, Text, Button ,StyleSheet,TextInput,TouchableOpacity,ImageBackground} from "react-native";
 import { Camera } from 'expo-camera';
+import Snap from './snap';
 export default function Home()  {
+
   const [hasPermission, setHasPermission] = useState(null);
   const [type, setType] = useState(Camera.Constants.Type.back);
 
@@ -18,54 +20,51 @@ export default function Home()  {
   if (hasPermission === false) {
     return <Text>No access to camera</Text>;
   }
+const image = { uri: "https://i.pinimg.com/736x/dd/b3/c7/ddb3c721f6df2017b4bce462d756e652.jpg" }
+function profileImage(){
+    return(
+      <Snap />
+    );
 
+}
     return(          
-          <View style={styles.container}>
-      <Camera style={styles.camera} type={type}>
-        <View style={styles.buttonContainer}>
-          <TouchableOpacity
-            style={styles.button}
-            onPress={() => {
-              setType(
-                type === Camera.Constants.Type.back
-                  ? Camera.Constants.Type.front
-                  : Camera.Constants.Type.back
-              );
-            }}>
-            <Text style={styles.text}> Flip </Text>
-          </TouchableOpacity>
-        </View>
-      </Camera>
-      <Button title="Edit Profile" 
-      style={styles.btn}
-
-        />
-      <View style={styles.inputView}>
-        <TextInput
-          style={styles.TextInput}
-          placeholder="Login."
-          placeholderTextColor="#000"
-          onChangeText={(email) => setEmail(email)}
-            />
+      <View style={styles.container}>
+        <ImageBackground source={image} style={styles.image}>        
+        <View style={styles.loginBox}>
+        <View style={styles.inputView}>
+          <TextInput
+            style={styles.TextInput}
+            placeholder="Login."
+            placeholderTextColor="#000"
+            onChangeText={(email) => setEmail(email)}
+              />
         </View>
         <View style={styles.inputView}>
-        <TextInput
-          style={styles.TextInput}
-          placeholder="Password."
-          placeholderTextColor="#000"
-          onChangeText={(password) => setPassword(password)}
-            />
+          <TextInput
+            style={styles.TextInput}
+            placeholder="Password."
+            placeholderTextColor="#000"
+            onChangeText={(password) => setPassword(password)}
+              />
         </View>
-        <Button title="Login" 
+        <Button 
+            style={styles.btn}
+            title="Login"
+            onPress={() => profileImage  }
+          />
+        </View>
+        
+         
 
-        />
-        </View>
+        </ImageBackground>
+          
+      </View>
     );
 
 }
 const styles = StyleSheet.create({
     inputView: {
-      // backgroundColor: "powderblue",
+      backgroundColor: "#fff",
       borderWidth: 1,
       borderColor:"#000",
       borderRadius: 30,
@@ -77,21 +76,18 @@ const styles = StyleSheet.create({
       fontSize: 20,
       alignItems: "flex-start",
     },
-    btn:{
-      width: 20,
-      padding:10,
-      
+    loginBox: {
+      marginTop: 30,
     },
     container: {
       flex: 1,
-      padding: 30,
       backgroundColor:"powderblue",
     },
     camera: {
-      flex: 0.5,
-      width: 350,
-      padding:0,
-      marginBottom:0,
+      // flex: 0.5,
+      width: 300,
+      padding:10,
+      marginBottom:10,
     },
     buttonContainer: {
       flex: 1,
@@ -99,10 +95,18 @@ const styles = StyleSheet.create({
       flexDirection: 'row',
       margin: 20,
     },
-    button: {
-      flex: 0.1,
-      alignSelf: 'flex-end',
+    btn: {
+      alignSelf:'center',
       alignItems: 'center',
+      width: 10,
+      color: "#fff"
+    },
+    image: {
+      flex: 1,
+      resizeMode: "cover",
+      justifyContent: "center",
+      position: "relative"
+     
     },
     text: {
       fontSize: 18,

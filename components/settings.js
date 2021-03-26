@@ -13,7 +13,7 @@ function Feed({ navigation }) {
     <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
       <Text style={{margin:10, fontSize: 20}}>Press Button</Text>
       <Button
-        title="Press"
+        title="Pressed"
         color='#000'
         onPress={() => navigation.dispatch(DrawerActions.openDrawer())}
       />
