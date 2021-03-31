@@ -1,7 +1,7 @@
 import React, { useState, useEffect }  from 'react';
 import { View, Text, Button ,StyleSheet,TextInput,TouchableOpacity,ImageBackground} from "react-native";
 import { Camera } from 'expo-camera';
-import Snap from './snap';
+import Snap from './Profile';
 export default function Home()  {
 
   const [hasPermission, setHasPermission] = useState(null);

@@ -1,37 +1,40 @@
 import * as React from 'react';
-import { Text, View, StyleSheet, TextInput,Button } from 'react-native';
-import { Ionicons,AntDesign } from '@expo/vector-icons';
+import { StyleSheet} from 'react-native';
+import { Ionicons} from '@expo/vector-icons';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { NavigationContainer } from '@react-navigation/native';
-import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
+import { createStackNavigator } from '@react-navigation/stack';
 import Settings from './components/settings';
 import Home from './components/home';
 import ApiCall from './components/ApiCall';
-import Snap from './components/snap';
+import ProfileScreen from './components/Profile';
 
-    function HomeScreen() {
+    function HomeScreen({ navigation }) {
       return (
         <Home />
+        
       );
     }
 
-    function SettingsScreen() {
+    function SettingsScreen({ navigation }) {
       return (
         <Settings />
       
       );
     }
-    function SettingsLog() {
+    function SettingsLog({ navigation }) {
       return (
         <ApiCall/>
       );
     }
-    function ProfileSetting(){
+    function ProfileSetting({ navigation }){
       return(
-          <Snap />
+          <ProfileScreen />
       );
     }
 const Tab = createBottomTabNavigator();
+const Stack = createStackNavigator();
+
 
 export default function App() {
   return (
