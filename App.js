@@ -33,7 +33,7 @@ import ProfileScreen from './components/Profile';
       );
     }
 const Tab = createBottomTabNavigator();
-const Stack = createStackNavigator();
+// const Stack = createStackNavigator();
 
 
 export default function App() {
