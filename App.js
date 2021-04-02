@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { StyleSheet} from 'react-native';
+import { StyleSheet, View} from 'react-native';
 import { Ionicons} from '@expo/vector-icons';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { NavigationContainer } from '@react-navigation/native';
@@ -7,7 +7,11 @@ import { createStackNavigator } from '@react-navigation/stack';
 import Settings from './components/settings';
 import Home from './components/home';
 import ApiCall from './components/ApiCall';
-import ProfileScreen from './components/Profile';
+import Profile from './components/Profile';
+import EditProfile from './components/EditProfile';
+import {useTheme, Avatar} from 'react-native-paper';
+const ProfileStack = createStackNavigator();
+const Tab = createBottomTabNavigator();
 
     function HomeScreen({ navigation }) {
       return (
@@ -27,15 +31,7 @@ import ProfileScreen from './components/Profile';
         <ApiCall/>
       );
     }
-    function ProfileSetting({ navigation }){
-      return(
-          <ProfileScreen />
-      );
-    }
-const Tab = createBottomTabNavigator();
-// const Stack = createStackNavigator();
-
-
+   
 export default function App() {
   return (
       <NavigationContainer>
@@ -82,17 +78,64 @@ export default function App() {
           })}
           tabBarOptions={{
             activeTintColor: 'tomato',
-            inactiveTintColor: 'gray',
+            inactiveTintColor: 'white',
+            style:{
+              backgroundColor: "#694fad"
+            },
+
           }}
         >
           <Tab.Screen name="Home" component={HomeScreen} />
           <Tab.Screen name="Settings" component={SettingsScreen} />
           <Tab.Screen name="Music" component={SettingsLog} />
-          <Tab.Screen name="Profile" component={ProfileSetting} />
+          <Tab.Screen name="Profile" component={ProfileStackScreen} />
         </Tab.Navigator>
       </NavigationContainer>
     );
 }
+
+const ProfileStackScreen = ({navigation}) => {
+  const {colors} = useTheme();
+
+  return (
+    <ProfileStack.Navigator
+      screenOptions={{
+        headerStyle: {
+          backgroundColor: colors.background,
+          elevation: 0, 
+        },
+        headerTintColor: colors.text,
+      }}>
+      <ProfileStack.Screen
+        name="Profile"
+        component={Profile}
+        options={{
+          title: '',
+          headerRight: () => (
+            <View style={{marginRight: 10}}>
+              <Ionicons.Button
+                name="create-outline"
+                size={25}
+                backgroundColor={colors.background}
+                color={colors.text}
+                onPress={() => navigation.navigate('EditProfile')}
+              />
+            </View>
+          ),
+        }}
+      />
+      <ProfileStack.Screen
+        name="EditProfile"
+        options={{
+          title: '',
+        }}
+        component={EditProfile}
+      />
+    </ProfileStack.Navigator>
+  );
+};
+
+
 
 const styles = StyleSheet.create({
 Navigation:{
