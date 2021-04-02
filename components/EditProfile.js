@@ -1,9 +1,59 @@
 import React from 'react';
-import {View, TouchableOpacity, ImageBackground, Icon} from 'react-native';
+import {View, TouchableOpacity, ImageBackground, StyleSheet, Text} from 'react-native';
 import { Ionicons} from '@expo/vector-icons';
+import * as ImagePicker from 'expo-image-picker';
+import * as Permissions from 'expo-permissions';
+import { Button ,TouchableRipple} from 'react-native-paper';
+
+const pickFromGallery = async ()=>{
+  const {granted} =  await Permissions.askAsync(Permissions.CAMERA_ROLL)
+  if(granted){
+       let data =  await ImagePicker.launchImageLibraryAsync({
+            mediaTypes:ImagePicker.MediaTypeOptions.Images,
+            allowsEditing:true,
+            aspect:[1,1],
+            quality:0.5
+        })
+        if(!data.cancelled){
+            let newfile = { 
+              uri:data.uri,
+              type:`test/${data.uri.split(".")[1]}`,
+              name:`test.${data.uri.split(".")[1]}` 
+              
+          }
+            handleUpload(newfile)
+        }
+  }else{
+     Alert.alert("you need to give up permission to work")
+  }
+}
+const pickFromCamera = async ()=>{
+  const {granted} =  await Permissions.askAsync(Permissions.CAMERA)
+  if(granted){
+       let data =  await ImagePicker.launchCameraAsync({
+            mediaTypes:ImagePicker.MediaTypeOptions.Images,
+            allowsEditing:true,
+            aspect:[1,1],
+            quality:0.5
+        })
+      if(!data.cancelled){
+          let newfile = { 
+            uri:data.uri,
+            type:`test/${data.uri.split(".")[1]}`,
+            name:`test.${data.uri.split(".")[1]}` 
+
+        }
+          handleUpload(newfile)
+      }
+  }else{
+     Alert.alert("you need to give up permission to work")
+  }
+}
+
+
   function EditProfile(){
       return(
-        <View style={{flexDirection:'row', marginTop: 15, justifyContent:'center',alignItems:'center'}}>
+        <View style={{ marginTop: 30, justifyContent:'center',alignItems:'center'}}>
             <TouchableOpacity>
               <View style={{
                 height:100,
@@ -32,10 +82,32 @@ import { Ionicons} from '@expo/vector-icons';
                   }}/>
                 </View>
                 </ImageBackground>
-
+                
+                
               </View>
             </TouchableOpacity>
+            <View style={{marginTop:10}}>
+                <TouchableRipple onPress={() => {}}>
+                <View style={styles.menuItem}>
+                  <Ionicons name='settings-outline' color="red" size={20}/>
+                  <Text style={styles.menuItemText}>Setting</Text>
+                </View>
+              </TouchableRipple>
+              <TouchableRipple onPress={() =>{pickFromCamera}}>
+                <View style={styles.menuItem}>
+                  <Ionicons name='camera-outline' color="red" size={20}/>
+                  <Text style={styles.menuItemText}>Edit</Text>
+                </View>
+              </TouchableRipple>
+                </View>
+            
          </View>
       )
   }
   export default EditProfile;
+  const styles = StyleSheet.create({
+    menuItem: {
+      paddingVertical: 15,
+      paddingHorizontal: 30,
+    },
+  })
