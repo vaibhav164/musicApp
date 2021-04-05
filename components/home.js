@@ -44,6 +44,7 @@ function profileImage(){
             style={styles.TextInput}
             placeholder="Password."
             placeholderTextColor="#000"
+            secureTextEntry={true}
             onChangeText={(password) => setPassword(password)}
               />
         </View>
