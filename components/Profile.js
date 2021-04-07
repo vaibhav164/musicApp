@@ -11,11 +11,6 @@ import {
 import EditProfile from './EditProfile';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-// function Edit(){
-//   return(
-//     <EditProfile />
-//   );
-// };
 const Stack = createStackNavigator();
 const ProfileScreen = () =>{
     return(
@@ -89,12 +84,6 @@ const ProfileScreen = () =>{
                 <View style={styles.menuItem}>
                   <Ionicons name='settings-outline' color="red" size={20}/>
                   <Text style={styles.menuItemText}>Setting</Text>
-                </View>
-              </TouchableRipple>
-              <TouchableRipple onPress={() => EditProfile}>
-                <View style={styles.menuItem}>
-                  <Ionicons name='pencil-outline' color="red" size={20}/>
-                  <Text style={styles.menuItemText}>Edit</Text>
                 </View>
               </TouchableRipple>
             </View>

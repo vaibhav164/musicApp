@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { StyleSheet, View} from 'react-native';
+import { StyleSheet, View, Button} from 'react-native';
 import { Ionicons} from '@expo/vector-icons';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { NavigationContainer } from '@react-navigation/native';
@@ -10,12 +10,14 @@ import ApiCall from './components/ApiCall';
 import Profile from './components/Profile';
 import EditProfile from './components/EditProfile';
 import {useTheme, Avatar} from 'react-native-paper';
+import ProductName from './components/ProductName';
 const ProfileStack = createStackNavigator();
+const HomeStack= createStackNavigator();
 const Tab = createBottomTabNavigator();
 
-    function HomeScreen({ navigation }) {
+    function Product({ navigation }) {
       return (
-        <Home />
+        <ProductName />
         
       );
     }
@@ -132,6 +134,50 @@ const ProfileStackScreen = ({navigation}) => {
         component={EditProfile}
       />
     </ProfileStack.Navigator>
+  );
+};
+
+const HomeScreen = ({navigation}) => {
+  const {colors} = useTheme();
+
+  return (
+    <HomeStack.Navigator
+      screenOptions={{
+        headerStyle: {
+          backgroundColor: colors.background,
+          elevation: 0, 
+        },
+        headerTintColor: colors.text,
+      }}>
+      <HomeStack.Screen
+        name="Profile"
+        component={Home}
+        options={{
+          title: '',
+          headerStyle: {
+            height: 0
+          },
+          headerRight: () => (
+            <View>
+             <Button 
+              title="Login"
+              color="#000"
+              onPress={() => navigation.navigate('EditProfile')}
+
+            />
+            </View>
+          ),
+        }}
+        
+      />
+      <HomeStack.Screen
+        name="New"
+        options={{
+          title: '',
+        }}
+        component={ProductName}
+      />
+    </HomeStack.Navigator>
   );
 };
 
