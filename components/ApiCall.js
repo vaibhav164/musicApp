@@ -23,16 +23,16 @@ const ApiCall = ({navigation}) => {
 
 
 
-  const getDataUsingAsyncAwaitGetCall = async () => {
-    try {
-      const response = await axios.get(
-        'https://itunes.apple.com/search?term=Michael',
-      );
-      alert(JSON.stringify(response.data));
-    } catch (error) {
-      alert(error.message);
-    }
-  };
+  // const getDataUsingAsyncAwaitGetCall = async () => {
+  //   try {
+  //     const response = await axios.get(
+  //       'https://itunes.apple.com/search?term=Michael',
+  //     );
+  //     alert(JSON.stringify(response.data));
+  //   } catch (error) {
+  //     alert(error.message);
+  //   }
+  // };
   const image = { uri: "https://i.pinimg.com/736x/dd/b3/c7/ddb3c721f6df2017b4bce462d756e652.jpg" };
     return (
     <View style={styles.container}>
