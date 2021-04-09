@@ -1,18 +1,16 @@
-import React, { useState, useEffect }  from 'react';
+import React from 'react';
 import { View,
-         Text, 
+         SafeAreaView, 
          Button ,
          StyleSheet,
          TextInput,
-         TouchableOpacity,
          ImageBackground
-        } from "react-native";
-import { Camera } from 'expo-camera';
-import Snap from './Profile';
-import { NavigationContainer } from '@react-navigation/native';
+        } 
+        from "react-native";
 import { createStackNavigator } from '@react-navigation/stack';
-import ProductName from "./ProductName";
+import { NavigationContainer, DefaultTheme } from '@react-navigation/native';
 const Stack = createStackNavigator();
+import ProductName from "./ProductName";
 function setEmail(x){
   const Mail=x;
 }
@@ -20,13 +18,13 @@ function setPassword(y){
   const Code=y;
 }
 
- function Navigation({navigation})  {
+function Navigation({navigation})  {
 
 const image = { uri: "https://i.pinimg.com/736x/dd/b3/c7/ddb3c721f6df2017b4bce462d756e652.jpg" }
   
 
     return(          
-      <View style={styles.container}>
+      <SafeAreaView style={styles.container}>
         <ImageBackground source={image} style={styles.image}>        
         <View style={styles.loginBox}>
           <View style={styles.inputView}>
@@ -56,24 +54,34 @@ const image = { uri: "https://i.pinimg.com/736x/dd/b3/c7/ddb3c721f6df2017b4bce46
           </View>
         </ImageBackground>
           
-      </View>
+      </SafeAreaView>
     );
 
 }
 export default function HomePage({ navigation }) {
-  return (
-         <Stack.Navigator>
-    <Stack.Screen
-    name="New"
-    options={{
-      title: '',
-    }}
-    component={Navigation}
-  />
-  <Stack.Screen name="btn" title=""  component={ProductName}/>
-  </Stack.Navigator>
-   
-  );
+  const MyTheme = {
+    ...DefaultTheme,
+    colors: {
+      ...DefaultTheme.colors,
+      background: '#FFF',
+    },
+  };
+    return (
+      <Stack.Navigator theme={MyTheme}>
+      <Stack.Screen
+      name="New"
+      options={{
+        title: '',
+        headerStyle: {
+          height: 0,
+        },
+      }}
+      component={Navigation}
+    />
+    <Stack.Screen name="btn" option={{title:''  }} component={ProductName}/>
+    </Stack.Navigator>
+    
+    );
 }
 const styles = StyleSheet.create({
     inputView: {
@@ -93,24 +101,12 @@ const styles = StyleSheet.create({
       fontSize:20,
     },
     loginBox: {
-      // marginTop: 30,
+      marginTop: 30,
       margin:20
     },
     container: {
       flex: 1,
       backgroundColor:"powderblue",
-    },
-    camera: {
-      // flex: 0.5,
-      width: 300,
-      padding:10,
-      marginBottom:10,
-    },
-    buttonContainer: {
-      flex: 1,
-      backgroundColor: 'transparent',
-      flexDirection: 'row',
-      margin: 20,
     },
     btn: {
       alignSelf:'center',
@@ -120,15 +116,14 @@ const styles = StyleSheet.create({
     },
     image: {
       flex: 1,
-      resizeMode: "cover",
       alignItems:"center",
       justifyContent: "center",
-      position: "relative"
-     
+      height: "100%",
     },
     text: {
       fontSize: 18,
       color: 'white',
     },
+    
   });
     

@@ -9,7 +9,6 @@ import ApiCall from './components/ApiCall';
 import Profile from './components/Profile';
 import EditProfile from './components/EditProfile';
 import {useTheme, Avatar} from 'react-native-paper';
-import ProductName from './components/ProductName';
 const ProfileStack = createStackNavigator();
 const HomeStack= createStackNavigator();
 const Tab = createBottomTabNavigator();
