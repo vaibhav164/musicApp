@@ -1,77 +1,36 @@
 import React, {useState, useEffect} from 'react';
-import {View, StyleSheet, TouchableOpacity, ImageBackground, Text,FlatList} from 'react-native';
+import {View, StyleSheet, TouchableOpacity, ImageBackground, Text,FlatList,Button, Image} from 'react-native';
 import Animated from 'react-native-reanimated';
 import BottomSheet from 'reanimated-bottom-sheet';
-import Render from "./render";
-
-function ProductName({navigation}){
-
-    const [Track, setTrack] = useState([]);
-
-    useEffect(() => {
-      getTrackList();
-    }, []);
-  
-    const getTrackList = async () => {
-      try {
-        const response = require(`../Api/Data`);
-  
-        return setTrack(response.data);
-      } catch (error) {
-        console.warn(error);
-      }
-    };
-
-  const dinamic =()=>{
-    return(sheetRef.current.snapTo(0));
+import RenderContent from "./rendercontent";
+function onclick(){
+  return(
+    <Text>{navigation.ItemNo}</Text>
+  );
   }
 
-  const renderContent = (item) => (
-    <View
-      style={{
-        backgroundColor: 'white',
-        padding: 16,
-        height: 450,
-      }}
-    >
-    <FlatList
-        data={Track.results}
-        showsHorizontalScrollIndicator={false}
-        keyExtractor={(index) => index.key}
-        renderItem={({ item }) => {
-          return <Render item={item} navigation={navigation} />;
-        }}
-      />
-    </View>
-  );
-  
-
+function ProductName({navigation}){
   const sheetRef = React.useRef(null);
-    return(
-        <View style={styles.container}>
-        <ImageBackground
-          style={{ flex: 1, width: "100%", height: "100%"}}
-          source={{
-            uri:
-              'https://www.masitrading.com/wp-content/uploads/2019/12/cherries.jpg',
-          }}
-        >
-            <TouchableOpacity onPress={dinamic} >
-              <Text style={styles.titleStyle}>Example of Vaibhav Native Swipe Button</Text>
-            </TouchableOpacity>
-            <BottomSheet
-              ref={sheetRef}
-              snapPoints={[450, 400, 0]}
-              borderRadius={10}
-              renderContent={renderContent}
-            />          
+    const appdata = require("../Api/Data.json");
+     return (
+    <View style={styles.container}>
+        <Image
+        style={styles.img}
+        source={{uri:appdata.results[0].FruitImg1}} />
+        <BottomSheet style={styles.botmsheet}
 
-        </ImageBackground>
-       
-      </View>
-         );
-    
-}
+        ref={sheetRef}
+        snapPoints={[500, 400, 100]}
+        borderRadius={10}
+        renderContent={RenderContent}
+         />
+    </View>
+     
+    );
+      
+  };
+
+ 
 export default ProductName;
 const styles=StyleSheet.create({
     titleStyle:{
@@ -80,8 +39,15 @@ const styles=StyleSheet.create({
     },
     container:{
         flex:1,
-        justifyContent:"center",
+        // justifyContent:"center",
         alignItems:"center",
-        width:"100%",
     },
+    img:{
+      height:300,
+      width: "100%",
+
+    },
+    botmsheet:{
+      height:500,
+    }
 })

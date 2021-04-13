@@ -8,7 +8,7 @@ function Render(props){
     return(
             <TouchableOpacity onPress={navigateToDetailScreen}>
               <Ionicons name='image-outline' color="red" size={40}/>   
-            <View style={styles.container}>
+              <View style={styles.container}>
                 <Text> {props.item.FruitName} </Text>
                 <Text>  {props.item.fruitPrice} </Text>
                 <Text> {props.item.kind}</Text>
