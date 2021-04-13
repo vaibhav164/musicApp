@@ -29,6 +29,7 @@ const ApiCall = ({navigation}) => {
   
       <FlatList
         data={Track.results}
+        showsHorizontalScrollIndicator={false}
         keyExtractor={(index) => index.key}
         renderItem={({ item }) => {
           return <Record item={item} navigation={navigation} />;
@@ -39,6 +40,8 @@ const ApiCall = ({navigation}) => {
     </View>
   );
 };
+
+export default ApiCall;
 
 const styles = StyleSheet.create({
     container: {
@@ -80,4 +83,3 @@ const styles = StyleSheet.create({
     },
 });
 
-export default ApiCall;

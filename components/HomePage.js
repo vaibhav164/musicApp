@@ -78,7 +78,7 @@ export default function HomePage({ navigation }) {
       }}
       component={Navigation}
     />
-    <Stack.Screen name="btn" option={{title:''  }} component={ProductName}/>
+    <Stack.Screen name="btn" options={{title:'', headerShown: false}} component={ProductName}/>
     </Stack.Navigator>
     
     );
