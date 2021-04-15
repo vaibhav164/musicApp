@@ -4,28 +4,34 @@ import { Ionicons } from '@expo/vector-icons';
 function ReuseComponent(){
     const appdata = require("../Api/Data.json");
 return(
-    <TouchableOpacity style={styles.Img}>
+    <TouchableOpacity style={styles.container}>
         <ImageBackground
         style={styles.img}
         source={{uri:appdata.results[1].FruitImg1}} >
          <Ionicons name='heart' color="#fff" size={30} style={styles.icon}/>
         </ImageBackground>
-         <Text style={{fontSize:15, fontWeight:"bold"}}>{appdata.results[1].FruitName}</Text>
+        <View style={{alignItems:"center"}}>
+        <Text style={{fontSize:15, fontWeight:"bold"}}>{appdata.results[1].FruitName}</Text>
+        </View>
     </TouchableOpacity>
 );
 }
 export default ReuseComponent;
 const styles=StyleSheet.create({
+    container:{
+        flex:1,
+        borderRadius:10,
+        justifyContent:"center"
+    },
     img:{
-        justifyContent:"center",
-        alignItems:"center",
+        justifyContent:"flex-start",
+        alignItems:"flex-end",
         height:190,
         width:190,
         margin:5,
     },
     icon:{
-        marginLeft:150,
-        marginBottom:150,
-        opacity:0.5
+        opacity:0.5,
+        padding:5,
     }
 })

@@ -8,23 +8,29 @@ const RenderContent = () => {
     return(
     <View style={styles.container}>
           <Text style={styles.btn}>{appdata.results[0].FruitName}</Text>
-          <Text style={styles.price}>{appdata.results[0].fruitPrice}</Text>
+      <View style={styles.pricecontainer}>
+      <Text style={styles.price}>{appdata.results[0].fruitPrice}</Text>
+      <Text style={styles.discountPrice}>$8.3</Text>
+      <TouchableOpacity  style={styles.pricebtn}>
+        <Text style={styles.priceBtnText}>FreeShip</Text>
+      </TouchableOpacity>
+      </View>    
     <View style={styles.Icon}>
     <TouchableOpacity onPress={() => {}}>
                 <View style={styles.menuItem}>
-                  <Ionicons name='body-outline' color="#c0e218" size={30}/>
+                  <Ionicons name='body-outline' color="#c0e218" size={25}/>
                   <Text style={styles.menuItemText}>Safe</Text>
                 </View>
     </TouchableOpacity>
     <TouchableOpacity onPress={() => {}}>
                 <View style={styles.menuItem}>
-                  <Ionicons name='checkmark-done-outline' color="#c0e218" size={30}/>
+                  <Ionicons name='checkmark-done-outline' color="#c0e218" size={25}/>
                   <Text style={styles.menuItemText}>Quick</Text>
                 </View>
     </TouchableOpacity>
     <TouchableOpacity onPress={() => {}}>
                 <View style={styles.menuItem}>
-                  <Ionicons name='leaf-outline' color="#c0e218" size={30}/>
+                  <Ionicons name='leaf-outline' color="#c0e218" size={25}/>
                   <Text style={styles.menuItemText}>Fresh</Text>
                 </View>
     </TouchableOpacity>
@@ -54,8 +60,26 @@ const RenderContent = () => {
 const styles=StyleSheet.create({
 container:{
         backgroundColor: 'white',
-         padding: 8,
+        padding: 8,
         height: 450,
+},
+pricebtn:{
+ marginLeft:235,
+ color:"#fff",
+ fontWeight:"bold",
+ backgroundColor:"#24a0ed",
+ justifyContent:"center",
+ alignItems:"center",
+ height:25,
+ width:95,
+ borderRadius:5,
+},
+priceBtnText:{
+  color:"#fff",
+  fontWeight:"bold",  
+},
+pricecontainer:{
+flexDirection:"row",
 },
 btn:{
     fontStyle:"normal",
@@ -66,18 +90,28 @@ price:{
   color:"green",
   fontSize:20,
   fontWeight:"bold",
-  marginVertical:10,
+  marginVertical:3,
+  marginHorizontal:5,
+},
+discountPrice:{
+  color:"grey",
+  fontSize:16,
+  textDecorationLine: 'line-through',
+  textDecorationStyle: 'solid',
+  marginTop:7,
+  fontWeight:"bold",
 },
 Icon:{
   flexDirection:"row",
   justifyContent:"center",
   alignItems:"center",
-  borderTopColor:"#d8e3e7",
-  borderTopWidth:1,
+  marginHorizontal:5,
+ 
 },
 menuItem:{
-  marginHorizontal: 40,
-  marginTop:15,
+  marginHorizontal: 30,
+  marginTop:5,
+  flexDirection:"row"
 },
 menuItemText:{
   fontWeight:"bold",
@@ -92,6 +126,7 @@ txt:{
 Viewbtn:{
   flexDirection:"row",
   justifyContent:"center",
+  paddingVertical:5,
 },
 insidebox:{
   marginHorizontal:10,
@@ -99,5 +134,20 @@ insidebox:{
 },
 reuseComp:{
   flexDirection:"row",
-}
+},
+bottombtn:{
+  flexDirection:"row",
+  backgroundColor:"#c0e218",
+  justifyContent:"flex-end",
+  alignItems:"center",
+  borderRadius:5,
+  height:40,
+  padding:10,
+  marginTop:5,
+  shadowColor: '#000',
+  shadowOpacity: 1,
+  elevation: 6,
+  shadowRadius: 15 ,
+  shadowOffset : { width: 1, height: 13},
+},
 });

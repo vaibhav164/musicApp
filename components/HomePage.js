@@ -58,7 +58,7 @@ const image = { uri: "https://i.pinimg.com/736x/dd/b3/c7/ddb3c721f6df2017b4bce46
     );
 
 }
-export default function HomePage({ navigation }) {
+export default function HomePage() {
   const MyTheme = {
     ...DefaultTheme,
     colors: {
@@ -78,7 +78,7 @@ export default function HomePage({ navigation }) {
       }}
       component={Navigation}
     />
-    <Stack.Screen name="btn" options={{title:'', headerShown: false}} component={ProductName}/>
+    <Stack.Screen name="btn" options={{title:'', headerShown: false, tabBarVisible:true, }} component={ProductName}/>
     </Stack.Navigator>
     
     );
