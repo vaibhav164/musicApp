@@ -6,7 +6,6 @@ import RenderContent from "./rendercontent";
 import { SliderBox } from "react-native-image-slider-box";
 import Bottombutton from "./BottomButton";
 function ProductName({navigation}){
-  const sheetRef = React.useRef(null);
     const appdata = require("../Api/Data.json");
     const images = [
        appdata.results[0].FruitImg1,
@@ -31,17 +30,15 @@ function ProductName({navigation}){
           />
       </View>
         <BottomSheet 
-        ref={sheetRef}
-        snapPoints={[585,300,0]}
+        snapPoints={[580,300,0]}
         borderRadius={10}
         renderContent={RenderContent}
          />
-         <BottomSheet style={styles.smallSheet}
-        ref={sheetRef}
-        snapPoints={[290,100,0]}
+         {/* <BottomSheet style={styles.smallSheet}
+        snapPoints={[280,100,0]}
         borderRadius={10}
         renderContent={Bottombutton}
-         />
+         /> */}
     </View>
      
     );
@@ -64,12 +61,5 @@ const styles=StyleSheet.create({
       height:300,
       width: "100%",
 
-    },
-    smallSheet:{
-      shadowColor: '#000',
-        shadowOpacity: 1,
-        elevation: 6,
-        shadowRadius: 30 ,
-        shadowOffset : { width: 100, height: 200},
     }
 })

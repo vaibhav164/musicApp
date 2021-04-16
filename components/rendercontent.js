@@ -2,40 +2,51 @@ import React from 'react';
 import {Text, View, Button, StyleSheet, TouchableOpacity} from "react-native";
 import { Ionicons } from '@expo/vector-icons';
 import ReuseComponent from "./ReuseComponent";
+import IconTag from "./iconTag";
+import ViewMoreText from 'react-native-view-more-text';
+function renderViewMore(onPress){
+  return(
+    <Text onPress={onPress} style={{color:"#c0e218"}}>View more</Text>
+  )
+}
+function renderViewLess(onPress){
+  return(
+    <Text onPress={onPress}>View less</Text>
+  )
+}
 const RenderContent = () => {
     const appdata = require("../Api/Data.json");
 
     return(
     <View style={styles.container}>
-          <Text style={styles.btn}>{appdata.results[0].FruitName}</Text>
+      
+      <Text style={styles.btn}>{appdata.results[0].FruitName}</Text>
+
       <View style={styles.pricecontainer}>
+      
       <Text style={styles.price}>{appdata.results[0].fruitPrice}</Text>
       <Text style={styles.discountPrice}>$8.3</Text>
+      
       <TouchableOpacity  style={styles.pricebtn}>
         <Text style={styles.priceBtnText}>FreeShip</Text>
       </TouchableOpacity>
       </View>    
     <View style={styles.Icon}>
-    <TouchableOpacity onPress={() => {}}>
-                <View style={styles.menuItem}>
-                  <Ionicons name='body-outline' color="#c0e218" size={25}/>
-                  <Text style={styles.menuItemText}>Safe</Text>
-                </View>
-    </TouchableOpacity>
-    <TouchableOpacity onPress={() => {}}>
-                <View style={styles.menuItem}>
-                  <Ionicons name='checkmark-done-outline' color="#c0e218" size={25}/>
-                  <Text style={styles.menuItemText}>Quick</Text>
-                </View>
-    </TouchableOpacity>
-    <TouchableOpacity onPress={() => {}}>
-                <View style={styles.menuItem}>
-                  <Ionicons name='leaf-outline' color="#c0e218" size={25}/>
-                  <Text style={styles.menuItemText}>Fresh</Text>
-                </View>
-    </TouchableOpacity>
-    </View>      
-      <Text style={styles.txt}>{appdata.results[0].about}</Text>
+        <IconTag iconname={"body-outline"} text={"Safe"} />
+        <IconTag iconname={"checkmark-done-outline"} text={"Quick"} />
+        <IconTag iconname={"leaf-outline"} text={"Fresh"} />
+    </View>  
+
+    <ViewMoreText
+          numberOfLines={2}
+          renderViewMore={this.renderViewMore}
+          renderViewLess={this.renderViewLess}
+          textStyle={{textAlign: 'center'}}
+        >
+           <Text style={styles.txt}>{appdata.results[0].about}</Text>
+        </ViewMoreText>
+
+     
       <View style={styles.Viewbtn}>
         <Ionicons name='heart' color="red" size={30}/>
         <View style={styles.insidebox}>
@@ -52,6 +63,10 @@ const RenderContent = () => {
         <ReuseComponent />
         <ReuseComponent />
       </View>
+      <TouchableOpacity style={styles.bottombtn}  onPress={() => {}}>
+              <Text style={styles.buttontxt}>357</Text> 
+              <Text style={styles.buttontxt}>Checkout  {<Ionicons name="arrow-forward-outline" color="#fff" size={15}/>}</Text>        
+      </TouchableOpacity>
     </View>
   );
  }
@@ -60,8 +75,31 @@ const RenderContent = () => {
 const styles=StyleSheet.create({
 container:{
         backgroundColor: 'white',
-        padding: 8,
+        paddingHorizontal: 8,
         height: 450,
+},
+bottombtn:{
+  backgroundColor:"#c0e218",
+  flexDirection:"row",
+  justifyContent:"space-around",
+  alignItems:"center",
+  marginTop:5,
+  paddingHorizontal:0,
+  borderRadius:10,
+  shadowColor: 'rgba(0, 0, 0, 0.1)',
+    shadowOpacity: 0.8,
+    elevation: 6,
+    shadowRadius: 15 ,
+    shadowOffset : { width: 1, height: 13},
+},
+buttontxt:{
+  fontWeight:"bold",
+  fontSize:15,
+  color:"#fff",
+  marginRight:8,
+  paddingVertical:10,
+  paddingHorizontal:0,
+  marginHorizontal:0,
 },
 pricebtn:{
  marginLeft:235,
@@ -108,11 +146,6 @@ Icon:{
   marginHorizontal:5,
  
 },
-menuItem:{
-  marginHorizontal: 30,
-  marginTop:5,
-  flexDirection:"row"
-},
 menuItemText:{
   fontWeight:"bold",
   fontSize:20,
@@ -134,20 +167,5 @@ insidebox:{
 },
 reuseComp:{
   flexDirection:"row",
-},
-bottombtn:{
-  flexDirection:"row",
-  backgroundColor:"#c0e218",
-  justifyContent:"flex-end",
-  alignItems:"center",
-  borderRadius:5,
-  height:40,
-  padding:10,
-  marginTop:5,
-  shadowColor: '#000',
-  shadowOpacity: 1,
-  elevation: 6,
-  shadowRadius: 15 ,
-  shadowOffset : { width: 1, height: 13},
 },
 });

@@ -48,7 +48,7 @@ const image = { uri: "https://i.pinimg.com/736x/dd/b3/c7/ddb3c721f6df2017b4bce46
           <Button 
             title="Login"
             color="#000"
-            onPress={() => navigation.navigate('btn')}
+            onPress={() => navigation.navigate('ProductNameScreen')}
           />
 
           </View>
@@ -78,7 +78,7 @@ export default function HomePage() {
       }}
       component={Navigation}
     />
-    <Stack.Screen name="btn" options={{title:'', headerShown: false, tabBarVisible:true, }} component={ProductName}/>
+    <Stack.Screen name="ProductNameScreen" options={{title:'', headerShown: false, tabBarVisible:true, }} component={ProductName}/>
     </Stack.Navigator>
     
     );

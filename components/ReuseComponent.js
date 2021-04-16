@@ -26,9 +26,9 @@ const styles=StyleSheet.create({
     img:{
         justifyContent:"flex-start",
         alignItems:"flex-end",
-        height:190,
+        height:200,
         width:190,
-        margin:5,
+        margin:7,
     },
     icon:{
         opacity:0.5,
