@@ -4,16 +4,48 @@ import { Ionicons } from '@expo/vector-icons';
 import ReuseComponent from "./ReuseComponent";
 import IconTag from "./iconTag";
 import ViewMoreText from 'react-native-view-more-text';
-function renderViewMore(onPress){
-  return(
-    <Text onPress={onPress} style={{color:"#c0e218"}}>View more</Text>
-  )
+function CustomText(props) {
+  const [showMore, setShowMore] = useState(false);
+  const [lines, setLines] = useState(props.numberOfLines);
+  const onTextLayout = (e) => {
+    setShowMore(
+      e.nativeEvent.lines.length > props.numberOfLines && lines !== 0
+    );
+  };
+  return (
+    <View>
+      <Text
+        numberOfLines={lines}
+        onTextLayout={onTextLayout}
+        style={styles.description}
+      >
+        {props.children}
+      </Text>
+      {showMore && (
+        <TouchableOpacity
+          title="View More"
+          onPress={() => {
+            setLines(0);
+            setShowMore(false);
+          }}
+        >
+          <Text style={styles.viewmore}>View more</Text>
+        </TouchableOpacity>
+      )}
+      {!showMore && (
+        <TouchableOpacity
+          title="Hide"
+          onPress={() => {
+            setLines(props.numberOfLines);
+          }}
+        >
+          <Text style={styles.viewmore}>Hide</Text>
+        </TouchableOpacity>
+      )}
+    </View>
+  );
 }
-function renderViewLess(onPress){
-  return(
-    <Text onPress={onPress}>View less</Text>
-  )
-}
+
 const RenderContent = () => {
     const appdata = require("../Api/Data.json");
 
@@ -31,22 +63,13 @@ const RenderContent = () => {
         <Text style={styles.priceBtnText}>FreeShip</Text>
       </TouchableOpacity>
       </View>    
-    <View style={styles.Icon}>
-        <IconTag iconname={"body-outline"} text={"Safe"} />
-        <IconTag iconname={"checkmark-done-outline"} text={"Quick"} />
-        <IconTag iconname={"leaf-outline"} text={"Fresh"} />
-    </View>  
+      <View style={styles.Icon}>
+          <IconTag iconname={"body-outline"} text={"Safe"} />
+          <IconTag iconname={"checkmark-done-outline"} text={"Quick"} />
+          <IconTag iconname={"leaf-outline"} text={"Fresh"} />
+      </View>                
+          <Text style={styles.txt}>{appdata.results[0].about}</Text>
 
-    <ViewMoreText
-          numberOfLines={2}
-          renderViewMore={this.renderViewMore}
-          renderViewLess={this.renderViewLess}
-          textStyle={{textAlign: 'center'}}
-        >
-           <Text style={styles.txt}>{appdata.results[0].about}</Text>
-        </ViewMoreText>
-
-     
       <View style={styles.Viewbtn}>
         <Ionicons name='heart' color="red" size={30}/>
         <View style={styles.insidebox}>
@@ -63,10 +86,12 @@ const RenderContent = () => {
         <ReuseComponent />
         <ReuseComponent />
       </View>
+      <View>
       <TouchableOpacity style={styles.bottombtn}  onPress={() => {}}>
               <Text style={styles.buttontxt}>357</Text> 
               <Text style={styles.buttontxt}>Checkout  {<Ionicons name="arrow-forward-outline" color="#fff" size={15}/>}</Text>        
       </TouchableOpacity>
+      </View>
     </View>
   );
  }
@@ -164,6 +189,16 @@ Viewbtn:{
 insidebox:{
   marginHorizontal:10,
   flex:1,
+},
+description: {
+  color: "#888C97",
+  fontSize: 16,
+},
+viewmore: {
+  color: "#3EA806",
+  fontSize: 18,
+  fontWeight: "bold",
+  alignItems: "flex-end",
 },
 reuseComp:{
   flexDirection:"row",

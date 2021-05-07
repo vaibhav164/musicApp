@@ -1,10 +1,10 @@
-import React from 'react';
-import { NavigationContainer } from '@react-navigation/native';
-import Abc from "./Abc";
+import React from "react";
+import { NavigationContainer } from "@react-navigation/native";
+import NavigationPage from "./NavigationPage";
 export default function App() {
-  return(
+  return (
     <NavigationContainer>
-      <Abc />
+      <NavigationPage />
     </NavigationContainer>
-  )
+  );
 }

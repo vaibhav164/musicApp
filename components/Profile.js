@@ -42,7 +42,7 @@ const ProfileScreen = () =>{
               <Text style={{color:'#777777', marginLeft:15}}>9158402###</Text>
               </View>
               <View style={styles.row}>
-              <Ionicons name='md-mail' size={20} color='emailId.com' />
+              <Ionicons name='md-mail' size={20} color='#777777' />
               <Text style={{color:'#777777', marginLeft:15}}>Delhi, India</Text>
               </View>
             </View>
